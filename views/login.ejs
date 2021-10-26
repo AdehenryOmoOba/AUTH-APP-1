@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Node Auth</title>
+    <link rel="stylesheet" href="/public/assets/styles.css" type="text/css" >
+  </head>
+  <body>
+    <div class="login-form">
+      <h3>Login Page</h3>
+      <form action="/login" method="POST">
+        <div class="input-group">
+         <% if(emailMsg === "") { %>
+            <label for="email">Email:</label>
+        <%  } else { %>
+            <label for="email">Email: <%= emailMsg %></label>
+        <%  } %>
+          
+          <input type="email" name="email" />
+        </div>
+        <div class="input-group">
+         <% if (passwMsg === "") { %>
+            <label for="password">Password:</label> 
+         <%  }else { %>
+            <label for="password">Password:  <%= passwMsg %></label>
+         <% } %>
+          <input type="password" name="password" />
+        </div>
+        <button>Login</button>
+      </form>
+      <a href="/register">Register</a><a href="/" class="home-link">Home</a>
+    </div>
+  </body>
+</html>

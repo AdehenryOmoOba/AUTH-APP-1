@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+}
+
 require('./db')
 const usersController = require('./controls')
 const express = require('express');
@@ -9,7 +13,7 @@ const storeSession = new MongoDbSession({uri: uri, collection: "user"})
 
 
 app.use(express.urlencoded({extended: false}))
-app.use(session({secret: 'Key that will sign cookie', resave: false, saveUninitialized: false, store: storeSession}))
+app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false, store: storeSession}))
 app.use('/', usersController)
 app.set('view engine', 'ejs')
 app.use('/public', express.static('public'))
